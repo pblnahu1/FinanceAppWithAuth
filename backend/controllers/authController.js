@@ -1,5 +1,4 @@
-// import bcrypt from 'bcrypt';
-import jwt from "jsonwebtoken";
+import {generateToken} from "../utils/generateToken.js";
 import { query } from "../config/db.js";
 import bcrypt from "bcrypt";
 
@@ -21,12 +20,7 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Contraseña incorrecta" });
     }
 
-    const token = jwt.sign(
-      { id: user.id },
-      process.env.JWT_SECRET || "my_secret_key",
-      { expiresIn: "1h" }
-    );
-    console.log("Token generado con éxito:",token)
+    const token = generateToken({id: user.id});
     res.status(200).json({ token });
   } catch (error) {
     console.error("Error en el servidor:", error);
