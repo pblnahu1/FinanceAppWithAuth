@@ -4,14 +4,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import bodyParser from "body-parser"
-import jwt from "jsonwebtoken"
 import cors from "cors"
 
 import { PORT, FRONTEND_URL } from "./config/config.js";
 import { query } from "./config/db.js";
 import router from "./routes/authRoutes.js";
 import {hashPassword} from "./services/hashPassword.js";
-import authenticateToken from "./middlewares/authMiddleware.js";
 
 const app = express()
 
@@ -22,19 +20,12 @@ app.use(cors({
 
 app.use(bodyParser.json())
 
-// app.use(cookieParser())
-
-// enrutador
-
 app.get('/', (req,res) => {
     res.json({
         text: "api works!"
     })
 })
 
-
-
-// app.use('/api', authenticateToken, router)
 app.use('/api', router)
 
 

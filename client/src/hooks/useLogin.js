@@ -19,10 +19,8 @@ export const useLogin = () => {
     setErrorMessage(null);
     try {
       const token = await login(email, password);
-
-      console.log(token);
-
       if (token) {
+        console.log("Token OK. Bienvenido!")
         localStorage.setItem("token", token);
         navigate("/api/homedashboard");
       } else {
