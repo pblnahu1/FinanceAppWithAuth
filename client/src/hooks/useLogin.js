@@ -18,7 +18,7 @@ export const useLogin = () => {
     e.preventDefault();
     setErrorMessage(null);
     try {
-      const { token } = await login(email, password);
+      const token = await login(email, password);
 
       console.log(token);
 

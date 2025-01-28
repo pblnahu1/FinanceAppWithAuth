@@ -21,7 +21,7 @@ export const login = async (email, password) => {
     }
 
     const data = await response.json();
-    localStorage.setItem("token", data.token);
+    // localStorage.setItem("token", data.token);
     return data.token; // solo retorno el token
   } catch (error) {
     throw new Error(error.message || "Error desconocido");
