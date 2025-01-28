@@ -1,0 +1,15 @@
+export {default as DollarIcon} from './DollarIcon';
+export {default as GithubIcon} from './GithubIcon';
+export {default as LinkedinIcon} from './LinkedinIcon';
+export {default as PortfolioIcon} from './PortfolioIcon';
+export {default as IconNotify} from './IconNotify';
+export {default as ArrowDown} from './ArrowDown';
+export {default as ArrowDownWallet} from './ArrowDownWallet';
+export {default as ArrowTopWallet} from './ArrowTopWallet';
+export {default as ElectricityBillIcon} from './ElectricityBillIcon';
+export {default as IconSearch } from './IconSearch';
+export {default as MastercardIcon} from './MastercardIcon';
+export {default as PayablesIcon} from './PayablesIcon';
+export {default as ReceiptsIcon} from './ReceiptsIcon';
+export {default as SalaryIcon} from './SalaryIcon';
+export {default as ServiceIcon} from './ServiceIcon';

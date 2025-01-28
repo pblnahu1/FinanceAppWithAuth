@@ -1,7 +1,3 @@
-// algunas cosas las pongo a modo de ejemplo
-// pero en un momento van a cambiar, solo están
-// para dar a entender de cómo se vería con los datos de verdad....
-
 import { useEffect, useState } from "react";
 
 export default function PageDashboard() {
@@ -44,11 +40,8 @@ export default function PageDashboard() {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center">
-        <label
-          htmlFor="my-drawer-2"
-          className="p-4 drawer-button lg:hidden"
-        >
+      <div className="flex flex-col items-center drawer-content">
+        <label htmlFor="my-drawer-2" className="p-4 drawer-button lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -76,13 +69,13 @@ export default function PageDashboard() {
             <img
               src={user.profilePicture}
               alt="Foto de Perfil"
-              className="rounded-full w-20 h-20"
+              className="w-20 h-20 rounded-full"
             />
-            <h1 className="text-xl font-bold mt-2">{user.name}</h1>
+            <h1 className="mt-2 text-xl font-bold">{user.name}</h1>
             <span className="text-lg text-gray-400">{user.role}</span>
           </div>
 
-          <ul className="menu p-4">
+          <ul className="p-4 menu">
             {menuItems.map((item, index) => (
               <li key={index} className="py-2">
                 <a href={item.link} className="flex items-center">
@@ -93,11 +86,11 @@ export default function PageDashboard() {
             ))}
           </ul>
 
-          <div className="absolute bottom-6 w-full px-4">
+          <div className="absolute w-full px-4 bottom-6">
             <ul>
               <li className="py-2">
                 <a href="#">
-                  <i className="fa-solid fa-gear mr-2"></i>Configuration
+                  <i className="mr-2 fa-solid fa-gear"></i>Configuration
                 </a>
               </li>
               <li className="py-2">
@@ -108,7 +101,7 @@ export default function PageDashboard() {
                     window.location.href = "/";
                   }}
                 >
-                  <i className="fa-solid fa-right-from-bracket mr-2"></i>
+                  <i className="mr-2 fa-solid fa-right-from-bracket"></i>
                   Logout
                 </a>
               </li>

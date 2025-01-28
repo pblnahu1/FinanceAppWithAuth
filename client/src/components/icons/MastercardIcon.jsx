@@ -1,4 +1,4 @@
-export const MastercardIcon = () => {
+const MastercardIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,3 +23,5 @@ export const MastercardIcon = () => {
     </svg>
   );
 };
+
+export default MastercardIcon;

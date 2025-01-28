@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-// import Carousel from "../components/Carousel";
-import ContentHero from "../components/ContentHero";
+import { ContentHero } from "../components";
 
 export default function HomePage() {
-    useEffect(() => {
-        document.title = 'Gestión de Finanzas'
-    }, [])
-    return (
-        <>
-            {/* <Carousel /> */}
-            <ContentHero />
-        </>
-    )
+  useEffect(() => {
+    document.title = "Gestión de Finanzas";
+  }, []);
+  return (
+    <>
+      <ContentHero />
+    </>
+  );
 }

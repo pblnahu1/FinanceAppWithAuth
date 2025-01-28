@@ -1,10 +1,7 @@
 // eslint-disable-next-line react/prop-types
 const TogglePasswordButton = ({ showPassword, onClick }) => {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-    >
+    <button type="button" onClick={onClick}>
       {showPassword ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,8 +34,7 @@ const TogglePasswordButton = ({ showPassword, onClick }) => {
         </svg>
       )}
     </button>
+  );
+};
 
-  )
-}
-
-export default TogglePasswordButton
+export default TogglePasswordButton;

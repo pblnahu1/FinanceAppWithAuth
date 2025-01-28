@@ -1,0 +1,10 @@
+export {default as Earnings} from './Earnings';
+export {default as FooterDashboard} from './FooterDashboard';
+export {default as HeaderDashboard} from './HeaderDashboard';
+export {default as MonthlyEarnings} from './MonthlyEarnings';
+export {default as Notify} from './Notify';
+export {default as NumeroTarjeta} from './NumeroTarjeta';
+export {default as PayableAccounts} from './PayableAccounts';
+export {default as Search} from './Search';
+export {default as Wallet} from './Wallet';
+export {default as Transactions} from './Transactions';

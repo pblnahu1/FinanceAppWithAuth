@@ -1,57 +1,20 @@
 /* eslint-disable react/prop-types */
-import InputField from '../components/InputField';
-import { login } from '../services/authService';
-import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { InputField } from "../components";
+import { useLogin } from "../hooks/useLogin";
 
 const LoginPage = ({ handleStartLoginRegistroClick }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate(); 
-
-  const handleTogglePassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  useEffect(() => {
-    document.title = 'Iniciar Sesión';
-    setIsSubmitDisabled(!email || !password);
-  }, [email, password]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrorMessage(null);
-    try {
-      const { token } = await login(email, password);
-      
-      console.log(token);
-  
-      if(token) {
-        localStorage.setItem('token', token);
-        navigate('/api/homedashboard');
-      } else {
-        setErrorMessage("No se recibió un token del servidor");
-      }
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  };
+  const { email, setEmail, password, setPassword, showPassword, isSubmitDisabled, errorMessage, handleTogglePassword, handleSubmit } = useLogin();
 
   return (
     <div className="flex flex-col items-center justify-center m-0 lg:my-10">
-      <h1 className="m-0 text-3xl font-bold md:text-5xl lg:m-5">Iniciar Sesión</h1>
+      <h1 className="m-0 text-3xl font-bold md:text-5xl lg:m-5">
+        Iniciar Sesión
+      </h1>
       <span className="mb-5 text-center">
         La autenticación ahora se realiza contra el backend.
       </span>
 
-      {errorMessage && (
-        <p className="mb-4 text-red-500">
-          {errorMessage}
-        </p>
-      )}
+      {errorMessage && <p className="mb-4 text-red-500">{errorMessage}</p>}
 
       <form
         className="flex flex-col items-center justify-center w-full md:w-2/5"

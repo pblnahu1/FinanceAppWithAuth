@@ -1,56 +1,26 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import InputField from "../components/InputField";
-import { useEffect } from "react";
-// import handleClickDash from "../logica/handleClickDash";
-import { register } from "../services/authService";
-import { useNavigate } from "react-router-dom";
+import { InputField } from "../components";
+import { useRegister } from "../hooks/useRegister";
 
 // eslint-disable-next-line react/prop-types
-const Registro = ({
-  handleStartLoginRegistroClick,
-}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUser] = useState("");
-  const [name, setName] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-
-  const handleTogglePassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  useEffect(() => {
-    document.title = "Registrarse";
-
-    if (
-      email === "" ||
-      password === "" ||
-      username === "" ||
-      name === "" ||
-      apellido === ""
-    ) {
-      setIsSubmitDisabled(true);
-    } else {
-      setIsSubmitDisabled(false);
-    }
-  }, [email, password, username, name, apellido]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await register(email, password, username, name, apellido);
-      // handleClickDash(handleStartHomeDashboardCLick)
-      navigate("/api/homedashboard");
-    } catch (error) {
-      console.error(error.message);
-      setError(error.message);
-    }
-  }
+const Registro = ({ handleStartLoginRegistroClick }) => {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    username,
+    setUser,
+    name,
+    setName,
+    apellido,
+    setApellido,
+    showPassword,
+    isSubmitDisabled,
+    error,
+    handleTogglePassword,
+    handleSubmit,
+  } = useRegister()
 
   return (
     <div className="flex flex-col items-center justify-center m-0 lg:my-10">

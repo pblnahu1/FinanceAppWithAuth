@@ -1,16 +1,17 @@
 
+// import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import bodyParser from "body-parser"
 import jwt from "jsonwebtoken"
 import cors from "cors"
-// import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
-dotenv.config();
 
 import { PORT, FRONTEND_URL } from "./config/config.js";
 import { query } from "./config/db.js";
-import router from "./routes/authRoutes.js"
-import {hashPassword} from "./hashPassword.js"
+import router from "./routes/authRoutes.js";
+import {hashPassword} from "./services/hashPassword.js";
+import authenticateToken from "./middlewares/authMiddleware.js";
 
 const app = express()
 
@@ -33,6 +34,7 @@ app.get('/', (req,res) => {
 
 
 
+// app.use('/api', authenticateToken, router)
 app.use('/api', router)
 
 
@@ -47,13 +49,15 @@ app.get("/conn", async (req, res) => {
     }
 });
 
+
 hashPassword()
     .then(()=>{
         console.log('Todas las contraseñas han sido hasheadas.');
     })
     .catch((error)=>{
-        console.error('Error al hashear contraseñas: ', error.message);
+        console.error('Aviso de contrseñas: ', error.message);
     })
+
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en puerto ${PORT}`);
