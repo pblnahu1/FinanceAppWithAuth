@@ -3,7 +3,7 @@ import { query } from "../config/db.js";
 import bcrypt from "bcrypt";
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, hashed_password } = req.body;
   
   
   try {
@@ -15,7 +15,7 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Usuario no encontrado" });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(hashed_password, user.hashed_password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Contraseña incorrecta" });
     }
@@ -29,16 +29,16 @@ const loginUser = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-  const { email, password, username, name, apellido } = req.body;
-  console.log('Datos recibidos:',{email, password, username, name, apellido})
+  const { email, hashed_password, username, first_name, last_name } = req.body;
+  console.log('Datos recibidos:',{email, hashed_password, username, first_name, last_name})
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    await query("INSERT INTO users (email, password, username, name, apellido) VALUES ($1, $2, $3, $4, $5)", [
+    const hashedPassword = await bcrypt.hash(hashed_password, 10);
+    await query("INSERT INTO users (email, hashed_password, username, first_name, last_name) VALUES ($1, $2, $3, $4, $5)", [
       email,
       hashedPassword,
       username,
-      name, 
-      apellido
+      first_name, 
+      last_name
     ]);
     res.status(201).json({ message: "Usuario creado con éxito" });
   } catch (error) {

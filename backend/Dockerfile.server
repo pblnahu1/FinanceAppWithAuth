@@ -1,0 +1,11 @@
+FROM node:18
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3001
+
+CMD ["sh","-c","if [ \"$NODE_ENV\" = \"development\" ]; then npx nodemon server.js; else node server.js; fi"]

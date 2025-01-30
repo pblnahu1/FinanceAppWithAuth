@@ -12,8 +12,6 @@ import {
   MonthlyEarnings,
   Earnings,
 } from "./components/Dashboard";
-// import { protectedRequest } from "./services/authService";
-// import { useEffect } from "react";
 
 function App() {
   const path = ["/", "/api/login", "/api/registro", "/api/homedashboard"];
@@ -22,21 +20,6 @@ function App() {
   const handleStartLoginRegistroClick = (i) => {
     navigate(path[i]);
   };
-
-  // const fetchDashboardData = async () => {
-  //   try {
-  //     const data = await protectedRequest("/api/homedashboard");
-  //     console.log("Datos del dashboard:", data);
-  //   } catch (error) {
-  //     console.error("Error al obtener el dashboard:", error.message);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (window.location.pathname === "/api/homedashboard") {
-  //     fetchDashboardData();
-  //   }
-  // }, []);
 
   return (
     <Routes>

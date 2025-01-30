@@ -2,15 +2,54 @@ version: '3.9'
 services: 
   postgres:
     image: postgres:latest
-    container_name: render-postgres
+    container_name: render-postgres-finance-app
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mysecretpassword
-      POSTGRES_DB: postgres
+      POSTGRES_DB: db_finance_app
     ports:
       - "5444:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - finance-app-network
+    restart: always
+  
+  server:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.server
+    container_name: render-server-finance-app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:mysecretpassword@postgres:5432/db_finance_app
+      - NODE_ENV=development
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - finance-app-network
+  
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+    container_name: render-client-finance-app
+    ports:
+      - 5173:5173
+    depends_on:
+      - server
+    volumes:
+      - ./client:/usr/src/app
+    environment:
+      - VITE_BACKEND_URL=http://localhost:3001
+    networks:
+      - finance-app-network
 
 volumes:
   postgres_data:
+
+networks:
+  finance-app-network:

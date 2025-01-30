@@ -3,14 +3,14 @@ if (!BASE_URL) {
   throw new Error("VITE_BACKEND_URL no está definido en el archivo .env");
 }
 
-export const login = async (email, password) => {
+export const login = async (email, hashed_password) => {
   try {
     const response = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, hashed_password }),
     });
 
     if (!response.ok) {
@@ -21,21 +21,20 @@ export const login = async (email, password) => {
     }
 
     const data = await response.json();
-    // localStorage.setItem("token", data.token);
     return data.token; // solo retorno el token
   } catch (error) {
     throw new Error(error.message || "Error desconocido");
   }
 };
 
-export const register = async (email, password, username, name, apellido) => {
+export const register = async (email, hashed_password, username, first_name, last_name) => {
   try {
     const response = await fetch(`${BASE_URL}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password, username, name, apellido }),
+      body: JSON.stringify({ email, hashed_password, username, first_name, last_name }),
     });
 
     if (!response.ok) {
@@ -48,33 +47,3 @@ export const register = async (email, password, username, name, apellido) => {
     throw new Error(error.message || "Error desconocido");
   }
 };
-
-/*export const protectedRequest = async(endpoint, method="GET", body=null) => {
-  try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      throw new Error("No se encontró un tojen de autenticación. Por favor, inicia sesión");
-    }
-
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
-      method,
-      headers: {
-        "Content-Type":"application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-      body: body ? JSON.stringify(body) : null,
-    });
-
-    if(!response.ok){
-      if(response.status===401){
-        throw new Error("Acceso no autorizado. El token puede estar vencido.");
-      }
-      throw new Error("Error en la solicitud protegida.");
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Error en la solicitud protegida: ", error.message);
-    throw error;
-  }
-}*/

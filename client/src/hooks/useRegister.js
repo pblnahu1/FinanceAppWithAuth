@@ -4,10 +4,10 @@ import { register } from "../services/authService";
 
 export const useRegister = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [hashed_password, setPassword] = useState("");
   const [username, setUser] = useState("");
-  const [name, setName] = useState("");
-  const [apellido, setApellido] = useState("");
+  const [first_name, setName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ export const useRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await register(email, password, username, name, apellido);
+      await register(email, hashed_password, username, first_name, last_name);
       navigate("/api/homedashboard");
     } catch (error) {
       console.error(error.message);
@@ -33,28 +33,28 @@ export const useRegister = () => {
 
     if (
       email === "" ||
-      password === "" ||
+      hashed_password === "" ||
       username === "" ||
-      name === "" ||
-      apellido === ""
+      first_name === "" ||
+      last_name === ""
     ) {
       setIsSubmitDisabled(true);
     } else {
       setIsSubmitDisabled(false);
     }
-  }, [email, password, username, name, apellido]);
+  }, [email, hashed_password, username, first_name, last_name]);
 
   return {
     email,
     setEmail,
-    password,
+    hashed_password,
     setPassword,
     username,
     setUser,
-    name,
+    first_name,
     setName,
-    apellido,
-    setApellido,
+    last_name,
+    setLastName,
     showPassword,
     setShowPassword,
     isSubmitDisabled,

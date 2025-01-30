@@ -7,14 +7,14 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
   const {
     email,
     setEmail,
-    password,
+    hashed_password,
     setPassword,
     username,
     setUser,
-    name,
+    first_name,
     setName,
-    apellido,
-    setApellido,
+    last_name,
+    setLastName,
     showPassword,
     isSubmitDisabled,
     error,
@@ -38,15 +38,15 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
         <InputField
           type="text"
           placeholder="Name"
-          value={name}
+          value={first_name}
           onChange={(e) => setName(e.target.value)}
         />
 
         <InputField
           type="text"
           placeholder="Lastname"
-          value={apellido}
-          onChange={(e) => setApellido(e.target.value)}
+          value={last_name}
+          onChange={(e) => setLastName(e.target.value)}
         />
 
         <InputField
@@ -86,7 +86,7 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
               />
             </>
           }
-          value={password}
+          value={hashed_password}
           onChange={(e) => setPassword(e.target.value)}
           showPassword={showPassword}
           handleTogglePassword={handleTogglePassword}
