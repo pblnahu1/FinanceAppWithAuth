@@ -7,7 +7,7 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
   const {
     email,
     setEmail,
-    hashed_password,
+    password,
     setPassword,
     username,
     setUser,
@@ -37,20 +37,20 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
       >
         <InputField
           type="text"
-          placeholder="Name"
+          placeholder="Nombre"
           value={first_name}
           onChange={(e) => setName(e.target.value)}
         />
 
         <InputField
           type="text"
-          placeholder="Lastname"
+          placeholder="Apellido"
           value={last_name}
           onChange={(e) => setLastName(e.target.value)}
         />
 
         <InputField
-          type="text"
+          type="email"
           placeholder="Email"
           icon={
             <>
@@ -64,7 +64,7 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
 
         <InputField
           type="text"
-          placeholder="Username"
+          placeholder="Nombre de usuario"
           icon={
             <>
               <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
@@ -76,7 +76,7 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
 
         <InputField
           type="password"
-          placeholder="Password"
+          placeholder="Contraseña"
           icon={
             <>
               <path
@@ -86,7 +86,7 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
               />
             </>
           }
-          value={hashed_password}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           showPassword={showPassword}
           handleTogglePassword={handleTogglePassword}

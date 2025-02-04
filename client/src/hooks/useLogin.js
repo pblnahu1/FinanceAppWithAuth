@@ -4,7 +4,7 @@ import { login } from "../services/authService";
 
 export const useLogin = () => {
   const [email, setEmail] = useState("");
-  const [hashed_password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -18,7 +18,7 @@ export const useLogin = () => {
     e.preventDefault();
     setErrorMessage(null);
     try {
-      const token = await login(email, hashed_password);
+      const token = await login(email, password);
       if (token) {
         console.log("Token OK. Bienvenido!")
         localStorage.setItem("token", token);
@@ -33,13 +33,13 @@ export const useLogin = () => {
 
   useEffect(() => {
     document.title = "Iniciar Sesión";
-    setIsSubmitDisabled(!email || !hashed_password);
-  }, [email, hashed_password]);
+    setIsSubmitDisabled(!email || !password);
+  }, [email, password]);
 
   return {
     email,
     setEmail,
-    hashed_password,
+    password,
     setPassword,
     showPassword,
     setShowPassword,

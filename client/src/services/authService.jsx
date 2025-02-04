@@ -3,14 +3,14 @@ if (!BASE_URL) {
   throw new Error("VITE_BACKEND_URL no está definido en el archivo .env");
 }
 
-export const login = async (email, hashed_password) => {
+export const login = async (email, password) => {
   try {
     const response = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, hashed_password }),
+      body: JSON.stringify({ email, password }),
     });
 
     if (!response.ok) {
@@ -27,14 +27,14 @@ export const login = async (email, hashed_password) => {
   }
 };
 
-export const register = async (email, hashed_password, username, first_name, last_name) => {
+export const register = async (email, password, username, first_name, last_name) => {
   try {
     const response = await fetch(`${BASE_URL}/api/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, hashed_password, username, first_name, last_name }),
+      body: JSON.stringify({ email, password, username, first_name, last_name }),
     });
 
     if (!response.ok) {

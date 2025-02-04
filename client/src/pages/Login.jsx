@@ -3,7 +3,7 @@ import { InputField } from "../components";
 import { useLogin } from "../hooks/useLogin";
 
 const LoginPage = ({ handleStartLoginRegistroClick }) => {
-  const { email, setEmail, hashed_password, setPassword, showPassword, isSubmitDisabled, errorMessage, handleTogglePassword, handleSubmit } = useLogin();
+  const { email, setEmail, password, setPassword, showPassword, isSubmitDisabled, errorMessage, handleTogglePassword, handleSubmit } = useLogin();
 
   return (
     <div className="flex flex-col items-center justify-center m-0 lg:my-10">
@@ -21,7 +21,7 @@ const LoginPage = ({ handleStartLoginRegistroClick }) => {
         onSubmit={handleSubmit}
       >
         <InputField
-          type="text"
+          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -29,8 +29,8 @@ const LoginPage = ({ handleStartLoginRegistroClick }) => {
 
         <InputField
           type="password"
-          placeholder="Password"
-          value={hashed_password}
+          placeholder="Contraseña"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           showPassword={showPassword}
           handleTogglePassword={handleTogglePassword}
