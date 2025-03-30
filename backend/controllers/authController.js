@@ -47,8 +47,8 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
   try {
     const { email, password, username, first_name, last_name } = req.body;
-    
-    console.log("🟢 Datos recibidos en el registro:", { email, password, username, first_name, last_name });
+
+    console.log("🟢 Datos recibidos en el register:", { email, password, username, first_name, last_name });
 
     if (!email || !password || !username || !first_name || !last_name) {
       console.log("⚠️ Faltan datos para el registro");
@@ -67,7 +67,7 @@ const registerUser = async (req, res) => {
     console.log("🔑 Contraseña hasheada correctamente");
 
     await query(
-      "INSERT INTO users (email, hashed_password, username, first_name, last_name) VALUES ($1, $2, $3, $4, $5)", 
+      "INSERT INTO users (email, hashed_password, username, first_name, last_name) VALUES ($1, $2, $3, $4, $5) RETURNING id", 
       [email, hashedPassword, username, first_name, last_name]
     );
 

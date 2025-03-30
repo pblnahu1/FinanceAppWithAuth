@@ -1,23 +1,27 @@
-# Gestor de Finanzas con Autenticación de Usuarios JWT en Node y React
-La aplicación implementa autenticación basada en Json Web Token (JWT) el cual redirije al usuario a un Dashboard para administrar gastos. Los usuarios pueden registrarse e iniciar sesión, y las rutas protegidas son solo accesibles con un token válido.
+# Gestor de Finanzas con Autenticación de Usuarios JWT en Node.js y React
+## Descripción
+Esta aplicación permite a los usuarios gestionar sus gastos con autenticación basada en JSON Web Tokens (JWT). Los usuarios pueden registrarse, iniciar sesión y acceder a un Dashboard seguro para administrar sus finanzas.
 
-## Características
-- Stack Front: React JS, TailwindCSS/DaisyUI.
-- Stack Backend: Node JS, Express.
-- Stack DB: Postgres con Docker.
-- Axios para comunicarme con el Backend.
-- Contraseñas protegidas con Bcrypt.
-- Autenticación de usuarios con JWT.
-- Desarrollo de la UI con [Tailwind CSS](https://tailwindui.com/) y [DaisyUI](https://daisyui.com/) para acelerar el desarrollo y reutilizar componentes.
-- Funcionamiento dinámico de client/server con APIs.
-- Manejo de formularios y validaciones.
-- Actualización dinámica de la UI cuando se agregan, editan o eliminan gastos.
-- Pruebas y Debugging.
-- Diseño de la Aplicación con FIGMA:
-![alt text](client/public/gestor-finanzas.webp "Principal")
-<!-- Más (sacar de Figma) -->
+## Tecnologías utilizadas
+### Frontend
+- React con Vite 
+- TailwindCSS + DaisyUI
+- Axios para comunicación con el backend
 
-## Requisitos Previos
+### Backend
+- Node.js + Express.js 
+- PostgreSQL (base de datos) con Docker
+- Bcrypt para encriptación de contraseñas
+- JWT para autenticación segura
+
+### Herramientas adicionales
+- Docker y Docker Compose para contenerización
+- Nodemon para recarga automática de desarrollo
+- Multer para manejo de archivos
+- Nodemailer para envío de correos electrónicos
+
+## Instalación y Configuración
+### Requisitos previos
 Antes de comenzar, asegurate de tener instalado:
 - Node.js (incluye npm)
 - PostgreSQL
@@ -70,6 +74,7 @@ npm run dev
 - `nodemon` | `npm install nodemon` | Herramienta para reiniciar automáticamente el servidor al detectar cambios en el código.
 - `path` | `npm install path` | Biblioteca para trabajar con rutas de archivos y directorios.
 - `pg` | `npm install pg` | Librería para interactuar con bases de datos PostgreSQL desde Node.js.
+- `nodemailer` | `npm install nodemailer` | Librería para enviar correos electrónicos fácilmente.
 
 ### Instalaciones del Frontend
 - Iniciar aplicación React

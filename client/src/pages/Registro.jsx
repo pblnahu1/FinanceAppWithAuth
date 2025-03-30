@@ -39,14 +39,18 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
           type="text"
           placeholder="Nombre"
           value={first_name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
         />
 
         <InputField
           type="text"
           placeholder="Apellido"
           value={last_name}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
         />
 
         <InputField
