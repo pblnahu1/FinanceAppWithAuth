@@ -11,9 +11,9 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
     setPassword,
     username,
     setUser,
-    first_name,
+    firstName,
     setName,
-    last_name,
+    lastName,
     setLastName,
     showPassword,
     isSubmitDisabled,
@@ -26,19 +26,17 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
     <div className="flex flex-col items-center justify-center m-0 lg:my-10">
       <h1 className="m-0 text-3xl font-bold md:text-5xl lg:m-5">Registrarse</h1>
       <span className="mb-5 text-center">
-        La autenticación es simulada. Podés agregar cualquier cosa que eso te
-        llevará al dashboard.
+        La autenticación ahora se realiza contra el backend.
       </span>
       {error && <p className="mb-4 text-red-500">{error}</p>}
       <form
-        action=""
         className="flex flex-col items-center justify-center w-full md:w-2/5"
         onSubmit={handleSubmit}
       >
         <InputField
           type="text"
           placeholder="Nombre"
-          value={first_name}
+          value={firstName}
           onChange={(e) => {
             setName(e.target.value);
           }}
@@ -47,7 +45,7 @@ const Registro = ({ handleStartLoginRegistroClick }) => {
         <InputField
           type="text"
           placeholder="Apellido"
-          value={last_name}
+          value={lastName}
           onChange={(e) => {
             setLastName(e.target.value);
           }}
