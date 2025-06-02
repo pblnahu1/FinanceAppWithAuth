@@ -1,10 +1,7 @@
-export {default as Earnings} from './Earnings';
-export {default as FooterDashboard} from './FooterDashboard';
-export {default as HeaderDashboard} from './HeaderDashboard';
-export {default as MonthlyEarnings} from './MonthlyEarnings';
-export {default as Notify} from './Notify';
-export {default as NumeroTarjeta} from './NumeroTarjeta';
-export {default as PayableAccounts} from './PayableAccounts';
-export {default as Search} from './Search';
-export {default as Wallet} from './Wallet';
-export {default as Transactions} from './Transactions';
+export { default as DashboardCard } from './DashboardCard';
+export {default as ChartComponent} from './ChartComponent';
+export {default as BudgetCard} from './BudgetCard';
+export {default as Header} from "./Header"
+export { default as Sidebar } from './Sidebar';
+export {default as TransactionForm} from "./TransactionForm"
+export {default as TransactionItem} from "./TransactionItem"
