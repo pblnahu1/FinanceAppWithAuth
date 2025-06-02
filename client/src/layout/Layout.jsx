@@ -1,4 +1,5 @@
-import { Header, Footer } from "../components";
+/* eslint-disable react/prop-types */
+import { Header, Footer } from "../components/ui";
 
 const Layout = ({ children }) => {
   return (

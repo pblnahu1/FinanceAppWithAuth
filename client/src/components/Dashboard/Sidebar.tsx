@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <aside className="hidden md:flex md:w-64 flex-col bg-white border-r border-gray-200">
       <div className="flex items-center justify-center h-16 border-b border-gray-200">
-        <h1 className="text-xl font-semibold text-gray-800">FinTrack</h1>
+        <h1 className="text-xl font-semibold text-gray-800">Finance App</h1>
       </div>
       <div className="flex flex-col flex-1 overflow-y-auto">
         <nav className="flex-1 px-2 py-4 space-y-1">
