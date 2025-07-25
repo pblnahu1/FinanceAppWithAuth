@@ -1,16 +1,18 @@
 version: '3.9'
 services: 
   postgres:
-    image: postgres:latest
+    image: postgres
     container_name: render-postgres-finance-app
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_PASSWORD: pblnahupassword
       POSTGRES_DB: db_finance_app
+      POSTGRES_HOST_AUTH_METHOD: md5
     ports:
       - "5444:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./backend/sql/users.sql:/docker-entrypoint-initdb.d/users.sql
     networks:
       - finance-app-network
     restart: always
@@ -19,6 +21,20 @@ services:
       interval: 5s
       retries: 5
       start_period: 10s
+
+  # pgadmin:
+  #   container_name: render-pgadmin-finance-app
+  #   image: dpage/pgadmin4
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: pblnahu@pblnahu.com
+  #     PGADMIN_DEFAULT_PASSWORD: pblnahupassword
+  #   networks:
+  #     - finance-app-network
+  #   depends_on:
+  #     - postgres
   
   server:
     build: 
@@ -31,7 +47,8 @@ services:
       postgres: 
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgres://postgres:mysecretpassword@postgres:5432/db_finance_app
+      - DATABASE_URL=postgres://postgres:pblnahupassword@postgres:5432/db_finance_app
+      - FRONTEND_URL=http://localhost:5173
       - NODE_ENV=development
     volumes:
       - ./backend:/usr/src/app
@@ -60,3 +77,5 @@ volumes:
 
 networks:
   finance-app-network:
+    external: true
+    name: pgadmin-net
