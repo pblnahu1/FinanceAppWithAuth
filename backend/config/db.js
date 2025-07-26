@@ -2,18 +2,18 @@ import pkg from "pg";
 const { Pool } = pkg;
 
 /// Para local
-const pool = new Pool({
-    user: "postgres",
-    host: "localhost",
-    database: "db_finance_app",
-    password: "mysecretpassword",
-    port: 5444,
-});
+// const pool = new Pool({
+//     user: "postgres",
+//     host: "localhost",
+//     database: "db_finance_app",
+//     password: "mysecretpassword",
+//     port: 5444,
+// });
 
 /// Para Docker
-// const pool = new Pool({
-//     connectionString: process.env.DATABASE_URL,
-// })
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+})
 
 pool.connect()
     .then(() => console.log("conectado a la base de datos db_finance_app"))
